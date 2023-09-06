@@ -92,20 +92,20 @@ function Update() {
     velY -= gravedad * deltaTime;
 
     if (score >= 2 && score <= 3 && parado) {
-        let cuponUno = "billyUno";
+        let cuponUno = "Sneakers15";
         let porcentajeDescuento = "15%";
-        MostrarMensaje(`¡Ganaste! ${porcentajeDescuento} de descuento. Puedes redimir tu descuento hoy mismo con el código: ${cuponUno}`);
+        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo con el código: <span class="cupon">${cuponUno}</span>`);
         jugadorMuerto = true;
         mensajeGanasteMostrado = true;
     } else if(score >=4 && score <=5 && parado){
-        let cuponDos = "billyDos"
+        let cuponDos = "Sneakers20"
         let porcentajeDescuento = "20%";
-        MostrarMensaje(`¡Ganaste! ${porcentajeDescuento} de descuento. Puedes redimir tu descuento hoy mismo con el código: ${cuponDos}`);
+        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo con el código: <span class="cupon">${cuponDos}</span>`);
         jugadorMuerto = true;
         mensajeGanasteMostrado = true;
     } else if(score >= 6 && parado){
-        let cuponTres = "billyTres"
-        MostrarMensaje(`¡Ganaste! 25% de descuento: cupon ${cuponTres}`);
+        let cuponTres = "Sneakers25"
+        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo con el código: <span class="cupon">${cuponTres}</span>`);
         jugadorMuerto = true;
         mensajeGanasteMostrado = true;
     } 
@@ -139,9 +139,8 @@ function Saltar() {
 
 function MostrarMensaje(mensaje) {
     gameOver.style.display = "block";
-    gameOver.innerText = mensaje;
+    gameOver.innerHTML = mensaje; // Usa innerHTML en lugar de innerText
 }
-
 function MoverDinosaurio() {
     dinoPosY += velY * deltaTime;
     if(dinoPosY < sueloY){
