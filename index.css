@@ -125,10 +125,22 @@ background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-
     top: 41px;
 }
 
-@media (max-width){
-    .game-over {
-        top: 41px !important;
+.cupon {
+    font-weight: bold;
+    color: #3b82f6;
+    padding: 2px;
+    text-decoration: 5px underline;
+}
 
+@media (max-width:740px){
+    .game-over {
+        top: 28px !important;
+        font-size: 14px;
+        width: 80%;
+        margin: 10px auto;
+    }
+    .cupon{
+        text-decoration: 3px underline;
     }
 }
 
@@ -188,12 +200,7 @@ background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-
 }
 
 
-.cupon {
-    font-weight: bold;
-    color: #3b82f6;
-    padding: 2px;
-    text-decoration: 5px underline;
-}
+
 @media screen and (max-width: 768px) {
     #btn-iniciar {
         position: relative;
@@ -218,6 +225,10 @@ background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-
         left: 4%;
         position: relative;
         z-index: 999;
+    }
+
+    .btn-reiniciar{
+        font-size: 13px;
     }
 }
 
