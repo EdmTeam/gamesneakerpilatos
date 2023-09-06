@@ -94,19 +94,19 @@ function Update() {
     if (score >= 2 && score <= 3 && parado) {
         let cuponUno = "sneakers15";
         let porcentajeDescuento = "15%";
-        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo en productos de línea con el código: <span class="cupon">${cuponUno}</span>`);
+        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo en <span class="cupon-link"> <a href="https://www.pilatos.com/productos-top" target="_blank"> productos de línea </a>  </span> con el código: <span class="cupon">${cuponUno}</span>`);
         jugadorMuerto = true;
         mensajeGanasteMostrado = true;
     } else if(score >=4 && score <=5 && parado){
         let cuponDos = "sneakers20"
         let porcentajeDescuento = "20%";
-        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo en productos de línea con el código: <span class="cupon">${cuponDos}</span>`);
+        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo en <span class="cupon-link"> <a href="https://www.pilatos.com/productos-top" target="_blank"> productos de línea </a>  </span> con el código: <span class="cupon">${cuponDos}</span>`);
         jugadorMuerto = true;
         mensajeGanasteMostrado = true;
     } else if(score >= 6 && parado){
         let cuponTres = "sneakers25";
         let porcentajeDescuento = "25%";
-        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo en productos de línea con el código: <span class="cupon">${cuponTres}</span>`);
+        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo en <span class="cupon-link"> <a href="https://www.pilatos.com/productos-top" target="_blank"> productos de línea </a>  </span> con el código: <span class="cupon">${cuponTres}</span>`);
         jugadorMuerto = true;
         mensajeGanasteMostrado = true;
     } 

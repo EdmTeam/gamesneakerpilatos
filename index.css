@@ -129,8 +129,17 @@ background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-
     font-weight: bold;
     color: #3b82f6;
     padding: 2px;
-    text-decoration: 2px underline;
 }
+
+.cupon-link{
+    text-decoration: 1px underline;
+    cursor: pointer;
+}
+
+.cupon-link a{
+    color: #333;
+}
+
 
 .titulo-juego{
     font-weight: 800;
@@ -152,9 +161,7 @@ background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-
         width: 80%;
         margin: 10px auto;
     }
-    .cupon{
-        text-decoration: 3px underline;
-    }
+    
 }
 
 @keyframes animarDino{
