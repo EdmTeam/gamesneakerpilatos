@@ -129,7 +129,20 @@ background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-
     font-weight: bold;
     color: #3b82f6;
     padding: 2px;
-    text-decoration: 5px underline;
+    text-decoration: 2px underline;
+}
+
+.titulo-juego{
+    font-weight: 800;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Verdana;
+}
+
+.explicacion-juego{
+    font-family: Verdana;
+    font-size: 14px;
+
 }
 
 @media (max-width:740px){
@@ -153,9 +166,10 @@ background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-
     }
 }
 
+
 #btn-iniciar {
     position: relative;
-    margin: 0;
+    margin: 0 auto;
     padding: 0.8em 1em;
     outline: none;
     text-decoration: none;
@@ -173,7 +187,6 @@ background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
     top: 45%;
-    left: 45%;
     position: relative;
     z-index: 999;
 }
@@ -242,3 +255,4 @@ background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-
     height: 400px;
     }
 }
+
