@@ -104,7 +104,8 @@ function Update() {
         jugadorMuerto = true;
         mensajeGanasteMostrado = true;
     } else if(score >= 6 && parado){
-        let cuponTres = "Sneakers25"
+        let cuponTres = "Sneakers25";
+        let porcentajeDescuento = "25%";
         MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo con el código: <span class="cupon">${cuponTres}</span>`);
         jugadorMuerto = true;
         mensajeGanasteMostrado = true;
