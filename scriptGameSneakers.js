@@ -133,11 +133,11 @@ function Update() {
     velY -= gravedad * deltaTime;
 
 if (score >= 2 && score <= 3 && parado) {
-    Mostrarganaste("sneakers15");
+    Mostrarganaste("juegoenvio", "Envío gratis en tu próxima compra");
 } else if(score >=4 && score <=5 && parado) {
-    Mostrarganaste("sneakers20");
+    Mostrarganaste("juego10", "10% dto en camisetas y gorras de precio full");
 } else if(score >= 6 && parado) {
-    Mostrarganaste("sneakers25");
+    Mostrarganaste("juego15", "15% dto en buzos y chaquetas de precio full");
 }
     
     else if (score <= 1 && parado) {
@@ -172,7 +172,7 @@ function MostrarMensaje(mensaje) {
     gameOver.innerHTML = mensaje; 
 }
 
-function Mostrarganaste(mensaje) {
+function Mostrarganaste(codigo, textoPromocion) {
     // Seleccionamos el overlay y el contenedor interno
     const modal = document.getElementById("modal-ganaste");
     const contenidoGanaste = document.getElementById("contenido-ganaste");
@@ -180,18 +180,23 @@ function Mostrarganaste(mensaje) {
     // Mostramos el overlay
     modal.style.display = "block";
 
-    // HTML  dentro del modal
-
+    // HTML dentro del modal
     contenidoGanaste.innerHTML = `
         <h1>¡Ganaste!</h1>
-        <p>Envío gratis en tu próxima compra</p>
-        <p><strong>Código:</strong> <span style="color: red; font-weight: bold;">${mensaje}</span></p>
-        <p style="font-size: 14px;">IMPORTANTE: Haz captura de pantalla o guarda este código</p>
-        <button id="btn-comprar" style="background: #06b900; color: #fff; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer;">
+        <p>${textoPromocion}</p>
+        <p><strong>Código:</strong> 
+           <span style="color: red; font-weight: bold;">${codigo}</span>
+        </p>
+        <p style="font-size: 14px;">
+          IMPORTANTE: Haz captura de pantalla o guarda este código
+        </p>
+        <button id="btn-comprar" 
+            style="background: #06b900; color: #fff; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer;">
           ¡Compra ahora con tu código!
         </button>
         <br><br>
-        <button id="btn-volver-jugar" style="background: #ccc; color: #000; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer;">
+        <button id="btn-volver-jugar" 
+            style="background: #ccc; color: #000; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer;">
           ¡Volver a jugar!
         </button>
     `;
@@ -210,7 +215,6 @@ function Mostrarganaste(mensaje) {
         reiniciarJuego();
     });
 }
-
 
 
 function MoverDinosaurio() {
@@ -330,16 +334,15 @@ function GameOver() {
 
 
     if (score >= 2 && score <= 3) {
-        Mostrarganaste("sneakers15");
-      
+        Mostrarganaste("juegoenvio", "Envío gratis en tu próxima compra");
         document.getElementById("btn-reiniciar").style.display = "none";
     }
     else if (score >= 4 && score <= 5) {
-        Mostrarganaste("sneakers20");
+        Mostrarganaste("juego10", "10% dto en camisetas y gorras de precio full");
         document.getElementById("btn-reiniciar").style.display = "none";
     }
     else if (score >= 6) {
-        Mostrarganaste("sneakers25");
+        Mostrarganaste("juego15", "15% dto en buzos y chaquetas de precio full");
         document.getElementById("btn-reiniciar").style.display = "none";
     }
     else {
