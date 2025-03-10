@@ -56,11 +56,13 @@ var dino;
 var textoScore;
 var suelo;
 var gameOver;
+var ganaste;
 
 var mensajeGanasteMostrado = false; // Variable para rastrear si el mensaje de "Ganaste" ya se mostró
 var jugadorMuerto = false; // Variable para rastrear si el jugador ha muerto
 
 function Start() {
+    ganaste = document.querySelector(".ganaste-juego");
     gameOver = document.querySelector(".game-over");
     suelo = document.querySelector(".suelo");
     contenedor = document.querySelector(".contenedor");
@@ -74,10 +76,49 @@ function Start() {
 }
 function HandleIniciar() {
     var btnIniciar = document.getElementById("btn-iniciar");
-    btnIniciar.style.display = "none"; // Ocultar el botón de inicio
-    parado = false; // Iniciar el juego
-    Loop(); // Iniciar el bucle de actualización
+    btnIniciar.style.display = "none";
+    document.getElementById("mensaje-inicial").style.display = "none";
+    document.getElementById("btn-reiniciar").style.display = "none"; // Asegurar que el botón de reinicio esté oculto
+    parado = false;
+    Loop();
 }
+
+
+// Función para manejar cuando el jugador pierde
+function JuegoTerminado() {
+    parado = true;
+    document.getElementById("btn-reiniciar").style.display = "block"; // Mostrar botón de reinicio
+}
+
+// Función para reiniciar el juego
+function reiniciarJuego() {
+    // Ocultar el botón de reinicio y el texto de Game Over
+    document.getElementById("btn-reiniciar").style.display = "none";
+    gameOver.style.display = "none";
+
+    // Ocultar el overlay del modal (fondo oscuro)
+    const modal = document.getElementById("modal-ganaste");
+    modal.style.display = "none";
+
+    // Si quieres vaciar su contenido para empezar “limpio”
+    document.getElementById("contenido-ganaste").innerHTML = "";
+
+    // Reactivar el juego:
+    parado = false;
+    score = 0;
+    textoScore.innerText = score;
+    dino.classList.remove("dino-estrellado");
+    dino.classList.add("dino-corriendo");
+
+    // Limpiar obstáculos
+    obstaculos.forEach(obstaculo => obstaculo.remove());
+    obstaculos = [];
+
+    Loop(); // Reiniciar el bucle del juego
+}
+
+
+
 function Update() {
     if (parado) return;
 
@@ -91,28 +132,16 @@ function Update() {
 
     velY -= gravedad * deltaTime;
 
-    if (score >= 2 && score <= 3 && parado) {
-        let cuponUno = "sneakers15";
-        let porcentajeDescuento = "15%";
-        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo en <span class="cupon-link"> <a href="https://www.pilatos.com/productos-top" target="_blank"> productos de línea </a>  </span> con el código: <span class="cupon">${cuponUno}</span>`);
-        jugadorMuerto = true;
-        mensajeGanasteMostrado = true;
-    } else if(score >=4 && score <=5 && parado){
-        let cuponDos = "sneakers20"
-        let porcentajeDescuento = "20%";
-        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo en <span class="cupon-link"> <a href="https://www.pilatos.com/productos-top" target="_blank"> productos de línea </a>  </span> con el código: <span class="cupon">${cuponDos}</span>`);
-        jugadorMuerto = true;
-        mensajeGanasteMostrado = true;
-    } else if(score >= 6 && parado){
-        let cuponTres = "sneakers25";
-        let porcentajeDescuento = "25%";
-        MostrarMensaje(`¡Ganaste! <span class="cupon">${porcentajeDescuento} de descuento</span>. <br>Puedes redimir tu descuento hoy mismo en <span class="cupon-link"> <a href="https://www.pilatos.com/productos-top" target="_blank"> productos de línea </a>  </span> con el código: <span class="cupon">${cuponTres}</span>`);
-        jugadorMuerto = true;
-        mensajeGanasteMostrado = true;
-    } 
+if (score >= 2 && score <= 3 && parado) {
+    Mostrarganaste("sneakers15");
+} else if(score >=4 && score <=5 && parado) {
+    Mostrarganaste("sneakers20");
+} else if(score >= 6 && parado) {
+    Mostrarganaste("sneakers25");
+}
     
     else if (score <= 1 && parado) {
-        MostrarMensaje("¡Perdiste!");
+        MostrarMensaje("❌ ¡GAME OVER! ❌");
         jugadorMuerto = true;
     }
 }
@@ -140,8 +169,50 @@ function Saltar() {
 
 function MostrarMensaje(mensaje) {
     gameOver.style.display = "block";
-    gameOver.innerHTML = mensaje; // Usa innerHTML en lugar de innerText
+    gameOver.innerHTML = mensaje; 
 }
+
+function Mostrarganaste(mensaje) {
+    // Seleccionamos el overlay y el contenedor interno
+    const modal = document.getElementById("modal-ganaste");
+    const contenidoGanaste = document.getElementById("contenido-ganaste");
+
+    // Mostramos el overlay
+    modal.style.display = "block";
+
+    // HTML  dentro del modal
+
+    contenidoGanaste.innerHTML = `
+        <h1>¡Ganaste!</h1>
+        <p>Envío gratis en tu próxima compra</p>
+        <p><strong>Código:</strong> <span style="color: red; font-weight: bold;">${mensaje}</span></p>
+        <p style="font-size: 14px;">IMPORTANTE: Haz captura de pantalla o guarda este código</p>
+        <button id="btn-comprar" style="background: #06b900; color: #fff; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer;">
+          ¡Compra ahora con tu código!
+        </button>
+        <br><br>
+        <button id="btn-volver-jugar" style="background: #ccc; color: #000; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer;">
+          ¡Volver a jugar!
+        </button>
+    `;
+
+    // Agregamos eventos a los botones dentro del modal
+    const btnComprar = document.getElementById("btn-comprar");
+    btnComprar.addEventListener("click", () => {
+        // Lógica para "comprar con el código" (abrir enlace, etc.)
+        window.open("https://www.pilatos.com/productos-top", "_blank");
+    });
+
+    const btnVolverJugar = document.getElementById("btn-volver-jugar");
+    btnVolverJugar.addEventListener("click", () => {
+        // Cerramos modal y reiniciamos juego
+        modal.style.display = "none";
+        reiniciarJuego();
+    });
+}
+
+
+
 function MoverDinosaurio() {
     dinoPosY += velY * deltaTime;
     if(dinoPosY < sueloY){
@@ -255,8 +326,28 @@ function GanarPuntos() {
 }
 
 function GameOver() {
-    Estrellarse();
-    gameOver.style.display = "block";
+    Estrellarse();  // dino-estrellado, parado = true
+
+
+    if (score >= 2 && score <= 3) {
+        Mostrarganaste("sneakers15");
+      
+        document.getElementById("btn-reiniciar").style.display = "none";
+    }
+    else if (score >= 4 && score <= 5) {
+        Mostrarganaste("sneakers20");
+        document.getElementById("btn-reiniciar").style.display = "none";
+    }
+    else if (score >= 6) {
+        Mostrarganaste("sneakers25");
+        document.getElementById("btn-reiniciar").style.display = "none";
+    }
+    else {
+        // Si no llega ni a 2 puntos, es "Game Over"
+        MostrarMensaje("❌ ¡GAME OVER! ❌");
+        // Aquí sí muestras el botón para reiniciar
+        document.getElementById("btn-reiniciar").style.display = "block";
+    }
 }
 
 function DetectarColision() {

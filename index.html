@@ -9,25 +9,60 @@
 </head>
 <body>
        
-    <h2 class="titulo-juego">¿Cómo jugar?</h2>
-    <p class="explicacion-juego"> 🛹 ¡Salta obstáculos en tu patineta! 📱 Toca la pantalla en tu dispositivo móvil, 💻 haz clic o usa la barra espaciadora en tu computadora para saltar.</p>
-    <div class="game-over">SE ACABO
+    <div class="Texto-titulo-superior">
+        <h2>SUPERDRY SKATE</h2>
+        <p>¡Conduce el Snowboard y esquiva los obstáculos para ganar!</p>
+        <div class="detalles-texto-superior">
+            <p>2 y 3 puntos: Envío gratis</p>
+            <p>4 y 5 puntos: Descuento</p>
+            <p>6 puntos en adelante: Descuento</p>
+        </div>
     </div>
-    
 
+
+    <div class="game-over"></div>
+
+  
+  
 
     <div class="contenedor">
- <button id="btn-iniciar">¡Inicia tu Aventura y Gana Ya - Clic Aquí!</button>
+
+        <div class="contenedor-ganaste" id="modal-ganaste">
+            <div  class="ganaste-juego" id="contenido-ganaste"></div>
+
+            
+        </div>
+     
+     <!-- Nuevo contenedor para el mensaje inicial -->
+     <div id="mensaje-inicial">
+        <p>Usa la barra espaciadora o presiona click para saltar y esquivar los obstáculos</p>
+    </div>
+
+ <button id="btn-iniciar">Jugar!</button>
         <div class="suelo"></div>
         
         <div class="dino dino-corriendo"></div>
 
         <div class="score">0</div>
 
+        <div>
+            <button id="btn-reiniciar" class="btn-reiniciar" style="display: none;" onclick="reiniciarJuego()">Volver a Jugar</button>
+        </div>
+
     </div>
 
-    <div>
-        <button class="btn-reiniciar" style="display: block;" onclick="window.location.reload();">Volver a Jugar</button>
+ 
+
+
+    <div class="instructions-container-inferior">
+        <h3 class="instructions-title-inferior">Para redimir tu premio, sigue los siguientes pasos:</h3>
+        <ol class="instructions-list-inferior">
+            <li>Haz captura de pantalla o anota el código de descuento que te arroja el juego al ganar.</li>
+            <li>Busca los productos que quieras comprar y añádelos al carrito.</li>
+            <li>En el resumen de compra, ingresa el código, en la opción “Sumar código de descuento”.</li>
+            <li>Finaliza la compra y disfruta tu premio.</li>
+        </ol>
+        <p class="instructions-note-inferior"><strong>Nota:</strong> Es responsabilidad del cliente ingresar el cupón para obtener el descuento.</p>
     </div>
       
     
