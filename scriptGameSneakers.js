@@ -83,6 +83,15 @@ function HandleIniciar() {
     Loop();
 }
 
+  
+   const textoInstrucciones = document.getElementById("texto-instrucciones");
+    
+   // Cambiamos el contenido según sea desktop (ancho > 768) o mobile (<= 768)
+   textoInstrucciones.textContent = window.innerWidth <= 768
+     ? "Toca la pantalla para saltar y esquivar obstáculos."
+     : "Usa la barra espaciadora o haz clic para saltar y esquivar los obstáculos.";
+
+
 
 // Función para manejar cuando el jugador pierde
 function JuegoTerminado() {
