@@ -18,7 +18,7 @@ body{
     
     position: relative;
 
-    background: linear-gradient(#092450, transparent) #3b82f6;/*linear-gradient(#90ebff, white);*/
+    background: url(https://pilatos21.vtexassets.com/arquivos/edificio-4.png);
     transition: background-color 1s linear;
     overflow: hidden;
 }
@@ -44,7 +44,7 @@ body{
     left: 42px;
     z-index: 2;
 
-    background: url(https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-Juego-Skatr.png) repeat-x 0px 0px;
+    background: url(https://pilatos21.vtexassets.com/arquivos/skate-3-df.png) repeat-x 0px 0px;
     background-size: 336px 84px;
     background-position-x: 0px;
 
@@ -63,26 +63,26 @@ body{
     position: absolute;
     bottom: 0;
     left: 0;
-    background: url(https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-Juego-Suelo.png) repeat-x 0px 0px;
+    background: url(https://pilatos21.vtexassets.com/arquivos/pista-df.png) repeat-x 0px 0px;
     background-size: 50% 42px;
 
 }
 
 .cactus{
-    width: 46px;
-    height: 96px;
+    width: 113px;
+    height: 81px;
 
     position: absolute;
     bottom: 16px;
     left: 600px;
     z-index: 1;
 
-    background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-Juego-Obstaculo1.png) no-repeat;
+    background: url( https://pilatos21.vtexassets.com/arquivos/obstaculo-1-df.png) no-repeat;
 }
 .cactus2{
     width: 98px;
     height: 66px;
-    background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-Juego-Obstaculo2.png)  no-repeat;
+    background: url( https://pilatos21.vtexassets.com/arquivos/obstaculo-df.png)  no-repeat;
 
 }
 
@@ -105,7 +105,7 @@ background: url( https://pilatos21.vtexassets.com/arquivos/Pilatos-SneakersCity-
     right: 15px;
     z-index: 10;
 
-    color: #ffffff;
+    color: #ff0000;
     font-family: Verdana;
     font-size: 30px;
     font-weight: bold;
