@@ -182,14 +182,43 @@ function MostrarMensaje(mensaje) {
 }
 
 function Mostrarganaste(codigo, textoPromocion) {
-    // Seleccionamos el overlay y el contenedor interno
     const modal = document.getElementById("modal-ganaste");
     const contenidoGanaste = document.getElementById("contenido-ganaste");
 
-    // Mostramos el overlay
+    // Mostramos el overlay (fondo oscuro)
     modal.style.display = "block";
 
-    // HTML dentro del modal
+    // Variable para el botón específico según el código
+    let botonHTML = "";
+
+    // Dependiendo del código, creamos SOLO UN botón
+    if (codigo === "juegoenvio") {
+        botonHTML = `
+            <button id="btn-oferta1" 
+                style="background: #06b900; color: #fff; padding: 8px 16px; border: none; 
+                       border-radius: 5px; cursor: pointer;">
+                ¡Compra ahora con tu codigo!
+            </button>
+        `;
+    } else if (codigo === "juego10") {
+        botonHTML = `
+            <button id="btn-oferta2" 
+                style="background: #06b900; color: #fff; padding: 8px 16px; border: none; 
+                       border-radius: 5px; cursor: pointer;">
+                   ¡Compra ahora con tu codigo!
+            </button>
+        `;
+    } else if (codigo === "juego15") {
+        botonHTML = `
+            <button id="btn-oferta3" 
+                style="background: #06b900; color: #fff; padding: 8px 16px; border: none; 
+                       border-radius: 5px; cursor: pointer;">
+                   ¡Compra ahora con tu codigo!
+            </button>
+        `;
+    }
+
+    // Construimos el HTML final del modal
     contenidoGanaste.innerHTML = `
         <h1>¡Ganaste!</h1>
         <p>${textoPromocion}</p>
@@ -199,33 +228,40 @@ function Mostrarganaste(codigo, textoPromocion) {
         <p style="font-size: 14px;">
           IMPORTANTE: Haz captura de pantalla o guarda este código
         </p>
-        <button id="btn-comprar" 
-            style="background: #06b900; color: #fff; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer;">
-          ¡Compra ahora con tu código!
-        </button>
+        ${botonHTML}
         <br><br>
         <button id="btn-volver-jugar" 
-            style="background: #ccc; color: #000; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer;">
+            style="background: #ccc; color: #000; padding: 8px 16px; border: none; 
+                   border-radius: 5px; cursor: pointer;">
           ¡Volver a jugar!
         </button>
     `;
 
-    // Agregamos eventos a los botones dentro del modal
-    const btnComprar = document.getElementById("btn-comprar");
-    btnComprar.addEventListener("click", () => {
-        // Lógica para "comprar con el código" (abrir enlace, etc.)
-        window.open("https://www.pilatos.com/productos-top", "_blank");
-    });
+    // Ahora agregamos el evento al botón que se haya creado
+    if (codigo === "juegoenvio") {
+        const btnOferta1 = document.getElementById("btn-oferta1");
+        btnOferta1.addEventListener("click", () => {
+            window.open("https://www.superdry.com.co/envio-gratis-juego", "_blank");
+        });
+    } else if (codigo === "juego10") {
+        const btnOferta2 = document.getElementById("btn-oferta2");
+        btnOferta2.addEventListener("click", () => {
+            window.open("https://www.superdry.com.co/buzos-chaquetas-juego", "_blank");
+        });
+    } else if (codigo === "juego15") {
+        const btnOferta3 = document.getElementById("btn-oferta3");
+        btnOferta3.addEventListener("click", () => {
+            window.open("https://www.superdry.com.co/camisetas-gorras-juego", "_blank");
+        });
+    }
 
+    // Botón para cerrar el modal y reiniciar el juego
     const btnVolverJugar = document.getElementById("btn-volver-jugar");
     btnVolverJugar.addEventListener("click", () => {
-        // Cerramos modal y reiniciamos juego
         modal.style.display = "none";
         reiniciarJuego();
     });
 }
-
-
 function MoverDinosaurio() {
     dinoPosY += velY * deltaTime;
     if(dinoPosY < sueloY){
