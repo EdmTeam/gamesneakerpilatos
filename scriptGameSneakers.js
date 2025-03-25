@@ -141,11 +141,11 @@ function Update() {
 
     velY -= gravedad * deltaTime;
 
-if (score >= 2 && score <= 3 && parado) {
+if (score >= 2 && score <= 5 && parado) {
     Mostrarganaste("juegoenvio", "Envío gratis en tu próxima compra");
-} else if(score >=4 && score <=5 && parado) {
+} else if(score >=6 && score <=10 && parado) {
     Mostrarganaste("juego10", "10% dto en camisetas y gorras de precio full");
-} else if(score >= 6 && parado) {
+} else if(score >= 10 && parado) {
     Mostrarganaste("juego15", "15% dto en buzos y chaquetas de precio full");
 }
     
@@ -246,12 +246,12 @@ function Mostrarganaste(codigo, textoPromocion) {
     } else if (codigo === "juego10") {
         const btnOferta2 = document.getElementById("btn-oferta2");
         btnOferta2.addEventListener("click", () => {
-            window.open("https://www.superdry.com.co/buzos-chaquetas-juego", "_blank");
+            window.open( "https://www.superdry.com.co/camisetas-gorras-juego", "_blank");
         });
     } else if (codigo === "juego15") {
         const btnOferta3 = document.getElementById("btn-oferta3");
         btnOferta3.addEventListener("click", () => {
-            window.open("https://www.superdry.com.co/camisetas-gorras-juego", "_blank");
+            window.open("https://www.superdry.com.co/buzos-chaquetas-juego", "_blank");
         });
     }
 
@@ -378,15 +378,15 @@ function GameOver() {
     Estrellarse();  // dino-estrellado, parado = true
 
 
-    if (score >= 2 && score <= 3) {
+    if (score >= 2 && score <= 5) {
         Mostrarganaste("juegoenvio", "Envío gratis en tu próxima compra");
         document.getElementById("btn-reiniciar").style.display = "none";
     }
-    else if (score >= 4 && score <= 5) {
+    else if (score >= 6 && score <= 10) {
         Mostrarganaste("juego10", "10% dto en camisetas y gorras de precio full");
         document.getElementById("btn-reiniciar").style.display = "none";
     }
-    else if (score >= 6) {
+    else if (score >= 10) {
         Mostrarganaste("juego15", "15% dto en buzos y chaquetas de precio full");
         document.getElementById("btn-reiniciar").style.display = "none";
     }
